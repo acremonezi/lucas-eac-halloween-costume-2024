@@ -1,36 +1,80 @@
 input.onButtonPressed(Button.A, function () {
-    pins.digitalWritePin(DigitalPin.P0, 1)
-    music.play(music.stringPlayable("G B B B - B B B ", 120), music.PlaybackMode.UntilDone)
-    pins.digitalWritePin(DigitalPin.P0, 0)
+    pins.digitalWritePin(DigitalPin.P1, 1)
+    basic.showString("LUCAS")
+    basic.showLeds(`
+        # . . . .
+        # . . . .
+        # . . . .
+        # . . . .
+        # # # # #
+        `)
+    basic.pause(5000)
+    basic.showLeds(`
+        . . . . .
+        . # . # .
+        . . . . .
+        # . . . #
+        . # # # .
+        `)
+    music.play(music.stringPlayable("A - A - A - C C ", 240), music.PlaybackMode.UntilDone)
+    pins.digitalWritePin(DigitalPin.P1, 0)
+    basic.clearScreen()
 })
 input.onButtonPressed(Button.B, function () {
-    basic.showString("LUCAS")
+    pins.digitalWritePin(DigitalPin.P1, 1)
+    basic.showString("KENJI")
+    basic.showLeds(`
+        . # . . #
+        . # . # .
+        . # # . .
+        . # . # .
+        . # . . #
+        `)
+    basic.pause(5000)
+    basic.showLeds(`
+        . # . # .
+        # # . # #
+        # # # # #
+        . # # # .
+        . . # . .
+        `)
     music.play(music.stringPlayable("C5 A B G A F G E ", 120), music.PlaybackMode.UntilDone)
+    pins.digitalWritePin(DigitalPin.P1, 0)
+    basic.clearScreen()
 })
 input.onGesture(Gesture.Shake, function () {
-    music.play(music.stringPlayable("C5 B A D C - G C ", 120), music.PlaybackMode.UntilDone)
-    basic.showLeds(`
-        # . . . .
-        # . . . .
-        # . . . .
-        . . . . .
-        # # # # #
-        `)
-    music.play(music.stringPlayable("C D E F G A B C5 ", 120), music.PlaybackMode.UntilDone)
-    basic.showLeds(`
-        . . . . .
-        . . . . .
-        . . . . .
-        . . . . .
-        . . . . .
-        `)
-    music.play(music.stringPlayable("C5 B A G F E D C ", 120), music.PlaybackMode.UntilDone)
-    basic.showLeds(`
-        # . . . .
-        # . . . .
-        # . . . .
-        # . . . .
-        # # # # #
-        `)
-    music.play(music.stringPlayable("C D E F G A B C5 ", 120), music.PlaybackMode.UntilDone)
+    pins.digitalWritePin(DigitalPin.P1, 1)
+    for (let index = 0; index < 20; index++) {
+        basic.showLeds(`
+            . . . . .
+            . . # . .
+            . # # # .
+            . . # . .
+            . . . . .
+            `)
+        basic.showLeds(`
+            . . # . .
+            . # # # .
+            # # # # #
+            . # # # .
+            . . # . .
+            `)
+        basic.showLeds(`
+            # . # . #
+            . . # . .
+            # # . # #
+            . . # . .
+            # . # . #
+            `)
+        basic.showLeds(`
+            # . # . #
+            . . . . .
+            # . . . #
+            . . . . .
+            # . # . #
+            `)
+    }
+    music.play(music.stringPlayable("G F E C G F E C ", 131), music.PlaybackMode.UntilDone)
+    pins.digitalWritePin(DigitalPin.P1, 0)
+    basic.clearScreen()
 })
